@@ -5,6 +5,10 @@ WikipediaとはてなブックマークのデータからMeCabの辞書を作成
 作成手順は、Wikipedia辞書、はてな辞書ともに同じ流れです。  
 ここでは、MacOSX環境を前提としています。  
 
+**注意: Wikipedia辞書、はてな辞書は、品詞「名詞」「一般」として登録します。**  
+実際に利用をしてみたところ、Wikipedia辞書は使わないほうが良さそうです。  
+「です」「ます」といった形態素が特徴語として混入してしまうことがわかりました。
+
 ### 参考サイト
 * wikipedia辞書作成 http://tmp.blogdns.org/archives/2009/12/mecabwikipediah.html
 * はてな辞書作成 http://d.hatena.ne.jp/MikuHatsune/20130619/1371623163
@@ -51,8 +55,7 @@ WikipediaとはてなブックマークのデータからMeCabの辞書を作成
     隊  名詞,接尾,一般,*,*,*,隊,タイ,タイ
     EOS
     ```
-
-6. ちなみに，mecab -u wikipedia.dicで辞書指定することも可能  
+    ちなみに，mecab -u wikipedia.dicで辞書指定することも可能  
     ```sh
     $ echo 攻殻機動隊 | mecab -u wikipedia.dic
     攻殻機動隊	名詞,一般,*,*,*,*,攻殻機動隊,*,*,Wikipediaキーワード,
@@ -81,7 +84,7 @@ WikipediaとはてなブックマークのデータからMeCabの辞書を作成
     $ cp hatena.dic /usr/local/Cellar/mecab/0.996/lib/mecab/dic/ipadic/hatena.dic
     $ vim /usr/local/etc/mecabrc
     dicdir =  /usr/local/Cellar/mecab/0.996/lib/mecab/dic/ipadic
-    userdic = /usr/local/Cellar/mecab/0.996/lib/mecab/dic/ipadic/hatena.dic,/usr/local/Cellar/mecab/0.996/lib/mecab/dic/ipadic/wikipedia.dic
+    userdic = /usr/local/Cellar/mecab/0.996/lib/mecab/dic/ipadic/hatena.dic
     ```
 
 5. 適切に辞書の登録ができたか確認  
@@ -98,8 +101,7 @@ WikipediaとはてなブックマークのデータからMeCabの辞書を作成
     隊  名詞,接尾,一般,*,*,*,隊,タイ,タイ
     EOS
     ```
-
-6. ちなみに，mecab -u hatena.dicで辞書指定することも可能  
+    ちなみに，mecab -u hatena.dicで辞書指定することも可能  
     ```sh
     $ echo 攻殻機動隊 | mecab -u hatena.dic
     攻殻機動隊  名詞,一般,*,*,*,*,攻殻機動隊,*,*,はてなキーワード,
